@@ -1,0 +1,91 @@
+/**index.wxss**/
+.background{
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+image{
+  position: absolute;
+}
+
+.dice{
+  height: 0.5rem;
+  width: 0.5rem;
+  z-index: 2;
+}
+.dice_x{
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.dice_y{
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.card_tb{
+  height: 2rem;
+  width: 10rem;
+  z-index: 1;
+}
+.card_lr{
+  height: 10rem;
+  width: 2rem;
+  z-index: 1;
+}
+.card_top{
+  padding-bottom: 13.5rem;
+}
+.card_bottom{
+  padding-top: 12.5rem;
+}
+.card_left{
+  padding-right: 12.5rem;
+}
+.card_right{
+  padding-left: 13.5rem;
+}
+
+/* 设置选择菜单样式 */
+.menu{
+  height: 15rem;
+  width: 95%;
+  border: 4px solid black;
+  background-color: cornsilk;
+  border-radius: 20px;
+  opacity: 0.85;
+  z-index: 3;
+}
+.dice_row{
+  padding-top: 1rem;
+
+}
+
+.dice_menu{
+  height: 2rem;
+  width: 2rem;
+  position: relative;
+  border: 1px solid bisque;
+  top: 0.5rem;
+  margin: 0.1rem;
+}
+
+p{
+  font-size: larger;
+  font-weight: bolder;
+  padding-left: 0.2rem;
+}
+
+.btn_function{
+  background-color: bisque;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-top: 4rem;
+  margin-right:0.4rem;
+  float: right;
+
+}
+.dice_selected{
+  border-color: red;
+}
+

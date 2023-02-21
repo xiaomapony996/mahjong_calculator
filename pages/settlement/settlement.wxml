@@ -1,0 +1,61 @@
+<!--pages/settlement/settlement.wxml-->
+
+<!-- 主界面 -->
+<view class="page main">
+
+	<p>点击各家并输入牌型</p>
+	<view class="player" catchtap="keyboard_clicked" data-name="庄家">
+		<p>庄家</p>
+		<image wx:for="{{zhuang_list}}" src="{{zhuang_selected[index]}}"></image>
+	</view>
+	<view class="player" catchtap="keyboard_clicked" data-name="下家">
+		<p>下家</p>
+		<image wx:for="{{xia_list}}" src="{{xia_selected[index]}}"></image>
+	</view>
+	<view class="player" catchtap="keyboard_clicked" data-name="对家">
+		<p>对家</p>
+		<image wx:for="{{dui_list}}" src="{{dui_selected[index]}}"></image>
+	</view>
+	<view class="player" catchtap="keyboard_clicked" data-name="上家">
+		<p>上家</p>
+		<image wx:for="{{shang_list}}" src="{{shang_selected[index]}}"></image>
+	</view>
+
+</view>
+
+<!-- 麻将键盘 -->
+<view class="page keyboard" catchtap="keyboard_clicked" hidden="{{keyboard_display}}">
+
+	<view class="player_selected">
+		<p>{{player_name}}</p>
+		<image wx:for="{{keyboard_list}}" src="{{url[index]}}"></image>
+		<image src="../image/icon/delete.svg" class="btn_del" bindtap="card_del"></image>
+
+
+	</view>
+
+	<p>在牌型菜单中选择相应牌型并点击输入</p>
+	    <view>
+		<p>筒子</p>
+		<image wx:for="{{tong_list}}" src="../image/card_mj/card_mj_tong_{{item}}.svg" data-cardtab="tong" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+	</view>
+	    <view>
+		<p>条子</p>
+		<image wx:for="{{tiao_list}}" src="../image/card_mj/card_mj_tiao_{{item}}.svg" data-cardtab="tiao" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+	</view>
+	    <view>
+		<p>万子</p>
+		<image wx:for="{{wan_list}}" src="../image/card_mj/card_mj_wan_{{item}}.svg" data-cardtab="wan" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+	</view>
+	    <view>
+		<p>风型</p>
+		<image wx:for="{{feng_list}}" src="../image/card_mj/card_mj_feng_{{item}}.svg" data-cardtab="feng" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+	</view>
+	    <view>
+		<p>三元</p>
+		<image wx:for="{{yuan_list}}" src="../image/card_mj/card_mj_yuan_{{item}}.svg" data-cardtab="yuan" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+	</view>
+	<button catchtap="keyboard_comfirm">确认</button>
+	<button catchtap="keyboard_cancel">取消</button>
+
+</view>

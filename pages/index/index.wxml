@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="background">
+
+<image class="table" src="../image/table/table_v2.{{table_version}}.svg" mode="widthFix"></image>
+
+
+<image class="dice dice_x" src="../image/dice/dice_{{count_x}}.svg" mode="widthFix" bindtap="menu_clicked"></image>
+<image class="dice dice_y" src="../image/dice/dice_{{count_y}}.svg" mode="widthFix" bindtap="menu_clicked"></image>
+
+
+<image class="card_tb card_top" src="../image/card/card_dice{{dice_min_top}}_top.svg"></image>
+<image class="card_tb card_bottom" src="../image/card/card_dice{{dice_min_bottom}}_bottom.svg"></image>
+<image class="card_lr card_left" src="../image/card/card_dice{{dice_min_left}}_left.svg"></image>
+<image class="card_lr card_right" src="../image/card/card_dice{{dice_min_right}}_right.svg"></image>
+
+<view class="menu" style="display:{{MenuDisplay}};">
+  <view class="dice_row">
+    <p>骰子1：</p>
+    <image class="dice_menu {{num_x===index?'dice_selected':''}}" wx:for="{{img_list}}" src="../image/dice/dice_{{item}}.svg" data-dice_x="{{index}}" bindtap="dice_x_clicked"></image>
+  </view>
+
+  <view class="dice_row">
+    <p>骰子2：</p>
+    <image class="dice_menu {{num_y===index?'dice_selected':''}}" wx:for="{{img_list}}" src="../image/dice/dice_{{item}}.svg" data-dice_y="{{index}}" bindtap="dice_y_clicked"></image>
+  </view>
+
+
+  <button class="btn_function" size="mini" bindtap="menu_cancel">取消</button>
+  <button class="btn_function" size="mini" bindtap="menu_confirm">确认</button>
+  <button class="btn_function" size="mini" bindtap="menu_reset">重置</button>
+  <button class="btn_function" size="mini">胡牌结算</button>
+
+</view>
+
+</view>

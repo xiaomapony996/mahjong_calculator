@@ -1,0 +1,34 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/settlement/settlement"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "新手麻将计算器",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#000000",
+        "selectedColor": "ff7f50",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "iconPath": "./pages/image/icon/index.png",
+                "selectedIconPath": "./pages/image/icon/index_selected.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "iconPath": "./pages/image/icon/settlement.png",
+                "selectedIconPath": "./pages/image/icon/settlement_selected.png",
+                "pagePath": "pages/settlement/settlement",
+                "text": "结算"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}
