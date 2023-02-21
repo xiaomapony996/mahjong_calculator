@@ -20,16 +20,23 @@
 		<p>上家</p>
 		<image wx:for="{{shang_list}}" src="{{shang_selected[index]}}"></image>
 	</view>
+	<view>
+	<button bindtap="reset">重置</button>
+	<button>结算</button>
+	</view>
+
 
 </view>
 
+
 <!-- 麻将键盘 -->
-<view class="page keyboard" catchtap="keyboard_clicked" hidden="{{keyboard_display}}">
+<view class="page keyboard" hidden="{{keyboard_display}}">
 
 	<view class="player_selected">
 		<p>{{player_name}}</p>
 		<image wx:for="{{keyboard_list}}" src="{{url[index]}}"></image>
 		<image src="../image/icon/delete.svg" class="btn_del" bindtap="card_del"></image>
+
 
 
 	</view>
@@ -55,7 +62,10 @@
 		<p>三元</p>
 		<image wx:for="{{yuan_list}}" src="../image/card_mj/card_mj_yuan_{{item}}.svg" data-cardtab="yuan" data-cardnum="{{item}}" catchtap="card_clicked"></image>
 	</view>
-	<button catchtap="keyboard_comfirm">确认</button>
-	<button catchtap="keyboard_cancel">取消</button>
+	<view>
+		<button catchtap="keyboard_comfirm">确认</button>
+		<button catchtap="keyboard_cancel">取消</button>
+	</view>
+
 
 </view>

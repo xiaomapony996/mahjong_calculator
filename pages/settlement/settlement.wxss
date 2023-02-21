@@ -49,10 +49,10 @@ p{
 	margin: 0.4rem;
 	border-radius: 10px;
 }
-button{
-	border: 1px solid black;
-	float: left;
-}
 .btn_del{
 	border: none;
+}
+button{
+	border: 1px solid black;
+	margin: 0.5rem;
 }

@@ -31,18 +31,19 @@ Page({
         let name = e.currentTarget.dataset['name'];
         this.setData({
             keyboard_display:false,
-            player_name:name
-            
+            player_name:name 
         })
     },
     keyboard_cancel:function(){
+        let arr = [];
         this.setData({
             keyboard_display:true,
+            url:arr
         })
     },
     keyboard_comfirm:function(e){
         let name = this.data.player_name;
-        console.log(name);
+        let arr = [];
         if(name == '庄家'){
             this.setData({
                 zhuang_selected:this.data.url
@@ -65,6 +66,7 @@ Page({
         }
         this.setData({
             keyboard_display:true,
+            url:arr
         })
     },
     card_clicked:function(e){
@@ -88,6 +90,29 @@ Page({
                 url:this.data.url
             })          
           }
+    },
+    reset:function(){
+        this.setData({
+            zhuang_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            xia_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            dui_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            shang_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            tong_list:[1,2,3,4,5,6,7,8,9],
+            tiao_list:[1,2,3,4,5,6,7,8,9],
+            wan_list:[1,2,3,4,5,6,7,8,9],
+            feng_list:[1,2,3,4],
+            yuan_list:[1,2,3],
+            keyboard_display:true,
+            keyboard_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            player_name:"",
+            tab:[],
+            num:[],
+            url:[],
+            zhuang_selected:[],
+            xia_selected:[],
+            dui_selected:[],
+            shang_selected:[]
+        })
     },
     /**
      * 生命周期函数--监听页面加载
