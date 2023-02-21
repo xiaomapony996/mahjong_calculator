@@ -1,5 +1,7 @@
 
 // pages/settlement/settlement.js
+
+
 Page({
 
     /**
@@ -25,7 +27,8 @@ Page({
         zhuang_selected:[],
         xia_selected:[],
         dui_selected:[],
-        shang_selected:[]
+        shang_selected:[],
+        cardpool:[]
     },
     keyboard_clicked:function(e){
         let name = e.currentTarget.dataset['name'];
@@ -79,17 +82,29 @@ Page({
         arr0[0] = str;
         this.data.url = this.data.url.concat(arr0);
 
+    
+        var arr1 = [];
+        arr1[0]={tab:cardtab,num:cardnum};
+
+        this.data.cardpool = this.data.cardpool.concat(arr1);
+
         this.setData({
-            url:this.data.url
+            url:this.data.url,
+            cardpool:this.data.cardpool
         })
+        console.log(this.data.cardpool);
+
     },
     card_del:function(){
         if (this.data.url.length != 0) {
             this.data.url.splice(this.data.url.length - 1, 1);
+            this.data.cardpool.splice(this.data.cardpool.length - 1, 1);
             this.setData({
-                url:this.data.url
+                url:this.data.url,
+                cardpool:this.data.cardpool
             })          
           }
+          console.log(this.data.cardpool);
     },
     reset:function(){
         this.setData({
@@ -111,7 +126,8 @@ Page({
             zhuang_selected:[],
             xia_selected:[],
             dui_selected:[],
-            shang_selected:[]
+            shang_selected:[],
+            cardpool:[]
         })
     },
     /**
