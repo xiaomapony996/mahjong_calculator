@@ -26,7 +26,7 @@
 	</view>
 	<view>
 	<button bindtap="reset">重置</button>
-	<button>结算</button>
+	<button bindtap="settlement">结算</button>
 	</view>
 
 

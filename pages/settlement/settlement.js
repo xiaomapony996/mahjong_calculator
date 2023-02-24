@@ -57,6 +57,11 @@ Page({
                 zhuang_selected:this.data.url,
                 cardpool_zhuang:this.data.cardpool
             })
+            // if(this.data.cardpool_zhuang.length = 14){
+            //     this.setData({
+            //         result:['没胡牌','没胡牌','没胡牌','没胡牌']
+            //     })
+            // }
         }
         else if(name == '下家'){
             this.setData({
@@ -80,7 +85,6 @@ Page({
             keyboard_display:true,
             url:arr
         })
-        // console.log(this.data.cardpool_zhuang,this.data.cardpool_xia,this.data.cardpool_dui,this.data.cardpool_shang)
     },
     card_clicked:function(e){
         let cardtab = e.currentTarget.dataset['cardtab'];
@@ -102,7 +106,6 @@ Page({
             url:this.data.url,
             cardpool:this.data.cardpool
         })
-        // console.log(this.data.cardpool);
 
     },
     card_del:function(){
@@ -114,7 +117,6 @@ Page({
                 cardpool:this.data.cardpool
             })          
           }
-        //   console.log(this.data.cardpool);
     },
     reset:function(){
         this.setData({
@@ -143,6 +145,63 @@ Page({
             cardpool_dui:[],
             cardpool_shang:[],
         })
+    },
+    settlement:function () {
+
+        let cardpool = this.data.cardpool;
+        let cardpool_tong = [];
+        let cardpool_tiao = [];
+        let cardpool_wan = [];
+        let cardpool_feng = [];
+        let cardpool_yuan =[];
+
+        let arr = []
+
+
+        cardpool.sort(function (a,b) {
+            if(a.tab == b.tab){
+                return a.num - b.num;
+            }
+        })
+        for(let i=0;i<14;i++){
+            if(cardpool[i]['tab']== "tong"){
+                arr[0]=cardpool[i];
+                cardpool_tong = cardpool_tong.concat(arr);
+
+            }
+        }
+        console.log(cardpool_tong);
+
+
+        // let cardpool_zhuang = this.data.cardpool_zhuang;
+        // cardpool_zhuang.sort(function(a,b) {
+        //     return a.num - b.num;
+        // })
+
+        // let cardpool_xia = this.data.cardpool_xia;
+        // let cardpool_dui = this.data.cardpool_dui;
+        // let cardpool_shang = this.data.cardpool_shang;
+
+        // let cardpool_count = [{tong_count:0},{tiao_count:0},{wan_count:0},{feng_count:0},{yuan_count:0}];
+     
+            // for(let j=0;j<14;j++){
+            //     if(cardpool_zhuang[j]["tab"]== "tong"){
+            //         cardpool_count[0]["tong_count"] = cardpool_count[0]["tong_count"] +1;
+            //     }
+            //     else if(cardpool_zhuang[j]["tab"]== "tiao"){
+            //         cardpool_count[1]["tiao_count"] = cardpool_count[1]["tiao_count"] +1;
+            //     }
+            //     else if(cardpool_zhuang[j]["tab"]== "wan"){
+            //         cardpool_count[2]["wan_count"] = cardpool_count[2]["wan_count"] +1;
+            //     }
+            //     else if(cardpool_zhuang[j]["tab"]== "feng"){
+            //         cardpool_count[3]["feng_count"] = cardpool_count[3]["feng_count"] +1;
+            //     }
+            //     else if(cardpool_zhuang[j]["tab"]== "yuan"){
+            //         cardpool_count[4]["yuan_count"] = cardpool_count[4]["yuan_count"] +1;
+            //     }
+            // }
+
     },
     /**
      * 生命周期函数--监听页面加载
