@@ -28,7 +28,12 @@ Page({
         xia_selected:[],
         dui_selected:[],
         shang_selected:[],
-        cardpool:[]
+        cardpool:[],
+        cardpool_zhuang:[],
+        cardpool_xia:[],
+        cardpool_dui:[],
+        cardpool_shang:[],
+        result:['胡牌','没胡牌','没胡牌','没胡牌']
     },
     keyboard_clicked:function(e){
         let name = e.currentTarget.dataset['name'];
@@ -49,28 +54,33 @@ Page({
         let arr = [];
         if(name == '庄家'){
             this.setData({
-                zhuang_selected:this.data.url
+                zhuang_selected:this.data.url,
+                cardpool_zhuang:this.data.cardpool
             })
         }
         else if(name == '下家'){
             this.setData({
-                xia_selected:this.data.url
+                xia_selected:this.data.url,
+                cardpool_xia:this.data.cardpool
             })
         }
         else if(name == '对家'){
             this.setData({
-                dui_selected:this.data.url
+                dui_selected:this.data.url,
+                cardpool_dui:this.data.cardpool
             })
         }
         else{
             this.setData({
-                shang_selected:this.data.url
+                shang_selected:this.data.url,
+                cardpool_shang:this.data.cardpool
             })
         }
         this.setData({
             keyboard_display:true,
             url:arr
         })
+        // console.log(this.data.cardpool_zhuang,this.data.cardpool_xia,this.data.cardpool_dui,this.data.cardpool_shang)
     },
     card_clicked:function(e){
         let cardtab = e.currentTarget.dataset['cardtab'];
@@ -92,7 +102,7 @@ Page({
             url:this.data.url,
             cardpool:this.data.cardpool
         })
-        console.log(this.data.cardpool);
+        // console.log(this.data.cardpool);
 
     },
     card_del:function(){
@@ -104,7 +114,7 @@ Page({
                 cardpool:this.data.cardpool
             })          
           }
-          console.log(this.data.cardpool);
+        //   console.log(this.data.cardpool);
     },
     reset:function(){
         this.setData({
@@ -127,7 +137,11 @@ Page({
             xia_selected:[],
             dui_selected:[],
             shang_selected:[],
-            cardpool:[]
+            cardpool:[],
+            cardpool_zhuang:[],
+            cardpool_xia:[],
+            cardpool_dui:[],
+            cardpool_shang:[],
         })
     },
     /**

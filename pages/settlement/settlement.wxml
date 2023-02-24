@@ -7,18 +7,22 @@
 	<view class="player" catchtap="keyboard_clicked" data-name="庄家">
 		<p>庄家</p>
 		<image wx:for="{{zhuang_list}}" src="{{zhuang_selected[index]}}"></image>
+		<p>{{result[0]}}</p>
 	</view>
 	<view class="player" catchtap="keyboard_clicked" data-name="下家">
 		<p>下家</p>
 		<image wx:for="{{xia_list}}" src="{{xia_selected[index]}}"></image>
+		<p>{{result[1]}}</p>
 	</view>
 	<view class="player" catchtap="keyboard_clicked" data-name="对家">
 		<p>对家</p>
 		<image wx:for="{{dui_list}}" src="{{dui_selected[index]}}"></image>
+		<p>{{result[2]}}</p>
 	</view>
 	<view class="player" catchtap="keyboard_clicked" data-name="上家">
 		<p>上家</p>
 		<image wx:for="{{shang_list}}" src="{{shang_selected[index]}}"></image>
+		<p>{{result[3]}}</p>
 	</view>
 	<view>
 	<button bindtap="reset">重置</button>
