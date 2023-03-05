@@ -32,8 +32,7 @@ Page({
         cardpool_zhuang:[],
         cardpool_xia:[],
         cardpool_dui:[],
-        cardpool_shang:[],
-        result:['胡牌','没胡牌','没胡牌','没胡牌']
+        cardpool_shang:[]
     },
     keyboard_clicked:function(e){
         let name = e.currentTarget.dataset['name'];
@@ -158,6 +157,8 @@ Page({
         let arr = []
 
 
+
+
         cardpool.sort(function (a,b) {
             if(a.tab == b.tab){
                 return a.num - b.num;
@@ -167,41 +168,24 @@ Page({
             if(cardpool[i]['tab']== "tong"){
                 arr[0]=cardpool[i];
                 cardpool_tong = cardpool_tong.concat(arr);
-
+            }
+            else if(cardpool[i]['tab']=="tiao"){
+                arr[0]=cardpool[i];
+                cardpool_tiao = cardpool_tiao.concat(arr);
+            }
+            else if(cardpool[i]['tab']=="wan"){
+                arr[0]=cardpool[i];
+                cardpool_wan = cardpool_wan.concat(arr);
+            }
+            else if(cardpool[i]['tab']=="feng"){
+                arr[0]=cardpool[i];
+                cardpool_feng = cardpool_feng.concat(arr);
+            }
+            else if(cardpool[i]['tab']=="yuan"){
+                arr[0]=cardpool[i];
+                cardpool_yuan = cardpool_yuan.concat(arr);
             }
         }
-        console.log(cardpool_tong);
-
-
-        // let cardpool_zhuang = this.data.cardpool_zhuang;
-        // cardpool_zhuang.sort(function(a,b) {
-        //     return a.num - b.num;
-        // })
-
-        // let cardpool_xia = this.data.cardpool_xia;
-        // let cardpool_dui = this.data.cardpool_dui;
-        // let cardpool_shang = this.data.cardpool_shang;
-
-        // let cardpool_count = [{tong_count:0},{tiao_count:0},{wan_count:0},{feng_count:0},{yuan_count:0}];
-     
-            // for(let j=0;j<14;j++){
-            //     if(cardpool_zhuang[j]["tab"]== "tong"){
-            //         cardpool_count[0]["tong_count"] = cardpool_count[0]["tong_count"] +1;
-            //     }
-            //     else if(cardpool_zhuang[j]["tab"]== "tiao"){
-            //         cardpool_count[1]["tiao_count"] = cardpool_count[1]["tiao_count"] +1;
-            //     }
-            //     else if(cardpool_zhuang[j]["tab"]== "wan"){
-            //         cardpool_count[2]["wan_count"] = cardpool_count[2]["wan_count"] +1;
-            //     }
-            //     else if(cardpool_zhuang[j]["tab"]== "feng"){
-            //         cardpool_count[3]["feng_count"] = cardpool_count[3]["feng_count"] +1;
-            //     }
-            //     else if(cardpool_zhuang[j]["tab"]== "yuan"){
-            //         cardpool_count[4]["yuan_count"] = cardpool_count[4]["yuan_count"] +1;
-            //     }
-            // }
-
     },
     /**
      * 生命周期函数--监听页面加载

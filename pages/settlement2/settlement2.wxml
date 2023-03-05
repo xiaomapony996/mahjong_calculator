@@ -1,0 +1,80 @@
+<!--pages/settlement2/settlement2.wxml-->
+
+<!-- 主界面 -->
+<view class="page main">
+
+<p>点击各类牌型并且输入确认</p>
+<view class="player" catchtap="keyboard_clicked" data-name="对">
+	<p>对</p>
+	<image wx:for="{{dui_list}}" src="{{dui_selected[index]}}"></image>
+</view>
+<view class="player" catchtap="keyboard_clicked" data-name="碰">
+	<p>碰</p>
+	<image wx:for="{{peng_list}}" src="{{peng_selected[index]}}"></image>
+</view>
+<view class="player" catchtap="keyboard_clicked" data-name="杠">
+	<p>杠</p>
+	<image wx:for="{{gang_list}}" src="{{gang_selected[index]}}"></image>
+</view>
+<view class="player" catchtap="keyboard_clicked" data-name="顺">
+	<p>顺</p>
+	<image wx:for="{{shun_list}}" src="{{shun_selected[index]}}"></image>
+</view>
+<view>
+<button bindtap="reset">重置</button>
+<button bindtap="settlement">结算</button>
+</view>
+
+
+</view>
+
+
+<!-- 麻将键盘 -->
+<view class="page keyboard" hidden="{{keyboard_display}}">
+
+<view class="player_selected">
+	<p>{{player_name}}</p>
+	<image wx:for="{{keyboard_list}}" src="{{url[index]}}"></image>
+	<image src="../image/icon/delete.svg" class="btn_del" bindtap="card_del"></image>
+
+
+
+</view>
+
+<p>在牌型菜单中选择相应牌型并点击输入</p>
+    <view>
+	<p>筒子</p>
+	<image wx:for="{{tong_list}}" src="../image/card_mj/card_mj_tong_{{item}}.svg" data-cardtab="tong" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+</view>
+    <view>
+	<p>条子</p>
+	<image wx:for="{{tiao_list}}" src="../image/card_mj/card_mj_tiao_{{item}}.svg" data-cardtab="tiao" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+</view>
+    <view>
+	<p>万子</p>
+	<image wx:for="{{wan_list}}" src="../image/card_mj/card_mj_wan_{{item}}.svg" data-cardtab="wan" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+</view>
+    <view>
+	<p>风型</p>
+	<image wx:for="{{feng_list}}" src="../image/card_mj/card_mj_feng_{{item}}.svg" data-cardtab="feng" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+</view>
+    <view>
+	<p>三元</p>
+	<image wx:for="{{yuan_list}}" src="../image/card_mj/card_mj_yuan_{{item}}.svg" data-cardtab="yuan" data-cardnum="{{item}}" catchtap="card_clicked"></image>
+</view>
+<view>
+	<button catchtap="keyboard_comfirm">确认</button>
+	<button catchtap="keyboard_cancel">取消</button>
+</view>
+
+
+</view>
+
+<!-- 结算窗口 -->
+<view class="page settlement" hidden="{{settlement_display}}">
+<p>胡牌/未胡牌</p>
+<p>牌型：XXX</p>
+<p>番数：XXX</p>
+<button>确定</button>
+
+</view>
