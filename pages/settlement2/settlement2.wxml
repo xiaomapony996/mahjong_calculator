@@ -71,10 +71,13 @@
 </view>
 
 <!-- 结算窗口 -->
-<view class="page settlement" hidden="{{settlement_display}}">
-<p>胡牌/未胡牌</p>
-<p>牌型：XXX</p>
-<p>番数：XXX</p>
-<button>确定</button>
+<view class="page settlement_background" hidden="{{settlement_display}}">
+
+
+<p class="settlement_content p1">胡牌/未胡牌</p>
+<p class="settlement_content p2">牌型：xxx</p>
+<p class="settlement_content p3">番数：xxx</p>
+<button class="settlement_content btn1">确定</button>
+
 
 </view>

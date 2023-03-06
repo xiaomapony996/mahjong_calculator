@@ -112,7 +112,7 @@ Page({
                 dui_sum:dui_count['tong_dui'] + dui_count['tiao_dui'] + dui_count['wan_dui'] + dui_count['feng_dui'] + dui_count['yuan_dui'],
                 card_type:card_type
             })
-            console.log(this.data.dui_count,this.data.dui_sum,card_type)
+            console.log(this.data.dui_count,this.data.dui_sum)
         }
         else if(name == '碰'){
             let cur_peng = null;
@@ -164,7 +164,7 @@ Page({
                 peng_sum:peng_count['tong_peng'] + peng_count['tiao_peng'] + peng_count['wan_peng'] + peng_count['feng_peng'] + peng_count['yuan_peng'],
                 card_type:card_type
             })
-            console.log(this.data.peng_count,this.data.peng_sum,card_type)
+            console.log(this.data.peng_count,this.data.peng_sum)
         }
         else if(name == '杠'){
             let cur_gang = null;
@@ -216,7 +216,7 @@ Page({
                 gang_sum:gang_count['tong_gang'] + gang_count['tiao_gang'] + gang_count['wan_gang'] + gang_count['feng_gang'] + gang_count['yuan_gang'],
                 card_type:card_type
             })
-            console.log(this.data.gang_count,this.data.gang_sum,card_type)
+            console.log(this.data.gang_count,this.data.gang_sum)
         }
         else{
             let cur_shun = null;
@@ -268,7 +268,7 @@ Page({
                 shun_sum:shun_count['tong_shun'] + shun_count['tiao_shun'] + shun_count['wan_shun'] + shun_count['feng_shun'] + shun_count['yuan_shun'],
                 card_type:card_type
             })
-            console.log(this.data.shun_count,this.data.shun_sum,card_type)
+            console.log(this.data.shun_count,this.data.shun_sum)
         }
         this.setData({
             keyboard_display:true,
@@ -336,23 +336,115 @@ Page({
             gang_count:{},
             gang_sum:0,
             shun_count:{},
-            shun_sum:0
+            shun_sum:0,
+            card_type:[]
         })
     },
     settlement:function () {
+        let dui_sum = this.data.dui_sum;
+        let peng_sum = this.data.peng_sum;
+        let gang_sum = this.data.gang_sum;
+        let shun_sum = this.data.shun_sum;
+
         let card_type = this.data.card_type;
         card_type = Array.from(new Set(card_type));
-        if(this.data.dui_sum*2+this.data.peng_sum*3+this.data.gang_sum*4+this.data.shun_sum*3 == 14 + this.data.gang_sum){
-          for(let i = 0;i<card_type.length;i++){
-              if(card_type == 'tong' || 'tiao')
-          }
-
-            console.log('胡牌',card_type)
+        if(dui_sum*2 + peng_sum*3 + gang_sum*4 + shun_sum*3 == 14 + gang_sum){
+            if(card_type.length == 1){
+                if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
+                    if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                        console.log('胡牌，清一色，10倍',card_type)
+                    }
+                    else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                        console.log('胡牌，清一色碰碰胡，20倍',card_type)
+                    }
+                    else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                        console.log('胡牌，清一色七小对，30倍',card_type)
+                    }
+                    else{
+                        console.log('胡牌，清一色，10倍',card_type)
+                    }
+                }
+            }
+            else if(card_type.length == 2){
+                if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
+                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                        if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                            console.log('胡牌，鸡胡，1倍',card_type)
+                        }
+                        else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                            console.log('胡牌，碰碰胡，2倍',card_type)
+                        }
+                        else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                            console.log('胡牌，七小对，3倍',card_type)
+                        }
+                        else{
+                            console.log('胡牌，鸡胡，1倍',card_type)
+                        }
+                        }
+                    }
+                    else if(card_type[1] == 'feng'||card_type[1] == 'yuan'){
+                        console.log('胡牌，混一色，2倍',card_type)
+                    }
+                else if(card_type[0] == 'feng'||card_type[0] == 'yuan'){
+                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                        console.log('胡牌，混一色，2倍',card_type)
+                    }
+                    else if(card_type[1]=='feng'||card_type[1]=='yuan'){
+                        console.log('胡牌，字一色，10倍',card_type)
+                    }
+                }
+            }
+            else if(card_type.length == 3){
+                if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
+                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                        console.log('胡牌，鸡胡，1倍',card_type)
+                    }
+                    else if(card_type[1]=='feng'||card_type[1]=='yuan'){
+                        if(card_type[2]=='feng'||card_type[2]=='yuan'){
+                            console.log('胡牌，混一色，2倍',card_type)
+                        }
+                        else if(card_type[2]=='tong'||card_type[2]=='tiao'||card_type[2]=='wan'){
+                            console.log('胡牌，鸡胡，1倍',card_type)
+                        }
+                    }
+                }
+                else if(card_type[0]=='feng'||card_type[0]=='yuan'){
+                    if(card_type[1]=='feng'||card_type[1]=='yuan'){
+                        console.log('胡牌，混一色，2倍',card_type)
+                    }
+                    else if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                        if(card_type[2]=='tong'||card_type[2]=='tiao'||card_type[2]=='wan'){
+                            console.log('胡牌，鸡胡，1倍',card_type)
+                        }
+                        else if(card_type[2]=='feng'||card_type[2]=='yuan'){
+                            console.log('胡牌，混一色，2倍',card_type)
+                        }
+                    }
+                }
+            }
+            else if(card_type.length == 4){
+                if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                    console.log('胡牌，鸡胡，1倍',card_type)
+                }
+                else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                    console.log('胡牌，碰碰胡，2倍',card_type)
+                }
+                else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                    console.log('胡牌，七小对，3倍',card_type)
+                }
+            }
+            else if(card_type.length == 5){
+                if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                    console.log('胡牌，鸡胡，1倍',card_type)
+                }
+                else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                    console.log('胡牌，碰碰胡，2倍',card_type)
+                }
+                else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                    console.log('胡牌，七小对，3倍',card_type)
+                }
+            }
         }
-        else{
-            console.log('没胡牌')
-        }
-
     },
     /**
      * 生命周期函数--监听页面加载

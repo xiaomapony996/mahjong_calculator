@@ -154,6 +154,9 @@ Page({
         let cardpool_feng = [];
         let cardpool_yuan =[];
 
+        let cur_tong = 0;
+        let pre_tong = 0;
+
         let arr = []
 
 
@@ -164,7 +167,7 @@ Page({
                 return a.num - b.num;
             }
         })
-        for(let i=0;i<14;i++){
+        for(let i=0;i<cardpool.length;i++){
             if(cardpool[i]['tab']== "tong"){
                 arr[0]=cardpool[i];
                 cardpool_tong = cardpool_tong.concat(arr);
@@ -185,7 +188,39 @@ Page({
                 arr[0]=cardpool[i];
                 cardpool_yuan = cardpool_yuan.concat(arr);
             }
+            else if(cardpool[i]['tab']=="tiao"){
+                arr[0]=cardpool[i];
+                cardpool_tiao = cardpool_tiao.concat(arr);
+            }
+            else if(cardpool[i]['tab']=='wan'){
+                arr[0]=cardpool[i];
+                cardpool_wan = cardpool_wan.concat(arr);
+            }
+            else if(cardpool[i]['tab']=='feng'){
+                arr[0]=cardpool[i];
+                cardpool_feng = cardpool_feng.concat(arr);
+            }
+            else if(cardpool[i]['tab']=='yuan'){
+                arr[0]=cardpool[i];
+                cardpool_yuan = cardpool_yuan.concat(arr);
+            }
         }
+
+        
+        for(let j=0;j<cardpool_tong.length;j++){
+            cur_tong = cur_tong[j]['num']
+            if(pre_tong != 0){
+                if(cur_tong = pre_tong){
+                    
+                }
+            }
+            else{
+                pre_tong = cur_tong;
+            }
+        }
+
+       console.log(cardpool_tong);
+
     },
     /**
      * 生命周期函数--监听页面加载
