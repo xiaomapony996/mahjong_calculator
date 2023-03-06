@@ -36,7 +36,10 @@ Page({
         gang_sum:0,
         shun_count:{},
         shun_sum:0,
-        card_type:[]
+        card_type:[],
+        card_state:"",
+        card_class:"",
+        card_times:""
 
     },
     keyboard_clicked:function(e){
@@ -337,7 +340,10 @@ Page({
             gang_sum:0,
             shun_count:{},
             shun_sum:0,
-            card_type:[]
+            card_type:[],
+            card_state:"",
+            card_class:"",
+            card_times:""
         })
     },
     settlement:function () {
@@ -349,102 +355,357 @@ Page({
         let card_type = this.data.card_type;
         card_type = Array.from(new Set(card_type));
         if(dui_sum*2 + peng_sum*3 + gang_sum*4 + shun_sum*3 == 14 + gang_sum){
-            if(card_type.length == 1){
+            if(card_type.length==1){
                 if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
                     if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
-                        console.log('胡牌，清一色，10倍',card_type)
+                        this.setData({
+                            card_state:"成胡",
+                            card_class:"清一色",
+                            card_times:"4倍"
+                        })
                     }
                     else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
-                        console.log('胡牌，清一色碰碰胡，20倍',card_type)
+                        this.setData({
+                            card_state:"成胡",
+                            card_class:"清一色+碰碰胡",
+                            card_times:"8倍"
+                        })
                     }
                     else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
-                        console.log('胡牌，清一色七小对，30倍',card_type)
-                    }
-                    else{
-                        console.log('胡牌，清一色，10倍',card_type)
+                        this.setData({
+                            card_state:"成胡",
+                            card_class:"清一色+七小对",
+                            card_times:"16倍"
+                        })
                     }
                 }
             }
-            else if(card_type.length == 2){
+            else if(card_type.length==2){
                 if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
                     if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
                         if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
-                            console.log('胡牌，鸡胡，1倍',card_type)
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"鸡胡",
+                                card_times:"1倍"
+                            })
                         }
                         else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
-                            console.log('胡牌，碰碰胡，2倍',card_type)
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"碰碰胡",
+                                card_times:"2倍"
+                            })
                         }
                         else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
-                            console.log('胡牌，七小对，3倍',card_type)
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"七小对",
+                                card_times:"3倍"
+                            })
                         }
-                        else{
-                            console.log('胡牌，鸡胡，1倍',card_type)
+                    }
+                    else{
+                        if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色",
+                                card_times:"2倍"
+                            })
                         }
+                        else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+碰碰胡",
+                                card_times:"4倍"
+                            })
                         }
-                    }
-                    else if(card_type[1] == 'feng'||card_type[1] == 'yuan'){
-                        console.log('胡牌，混一色，2倍',card_type)
-                    }
-                else if(card_type[0] == 'feng'||card_type[0] == 'yuan'){
-                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
-                        console.log('胡牌，混一色，2倍',card_type)
-                    }
-                    else if(card_type[1]=='feng'||card_type[1]=='yuan'){
-                        console.log('胡牌，字一色，10倍',card_type)
-                    }
-                }
-            }
-            else if(card_type.length == 3){
-                if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
-                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
-                        console.log('胡牌，鸡胡，1倍',card_type)
-                    }
-                    else if(card_type[1]=='feng'||card_type[1]=='yuan'){
-                        if(card_type[2]=='feng'||card_type[2]=='yuan'){
-                            console.log('胡牌，混一色，2倍',card_type)
-                        }
-                        else if(card_type[2]=='tong'||card_type[2]=='tiao'||card_type[2]=='wan'){
-                            console.log('胡牌，鸡胡，1倍',card_type)
+                        else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+七小对",
+                                card_times:"8倍"
+                            })
                         }
                     }
                 }
                 else if(card_type[0]=='feng'||card_type[0]=='yuan'){
                     if(card_type[1]=='feng'||card_type[1]=='yuan'){
-                        console.log('胡牌，混一色，2倍',card_type)
+                        this.setData({
+                            card_state:"成胡",
+                            card_class:"字一色",
+                            card_times:"10倍"
+                        })
                     }
-                    else if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                    else{
+                        if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色",
+                                card_times:"2倍"
+                            })
+                        }
+                        else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+碰碰胡",
+                                card_times:"4倍"
+                            })
+                        }
+                        else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+七小对",
+                                card_times:"8倍"
+                            })
+                        }
+                    }
+                }
+            }
+            else if(card_type.length==3){
+                if(card_type[0]=='tong'||card_type[0]=='tiao'||card_type[0]=='wan'){
+                    if(card_type[1]=='tong'||card_type[1]=='tiao'||card_type[1]=='wan'){
+                        if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"鸡胡",
+                                card_times:"1倍"
+                            })
+                        }
+                        else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"碰碰胡",
+                                card_times:"2倍"
+                            })
+                        }
+                        else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"七小对",
+                                card_times:"3倍"
+                            })
+                        }
+                    }
+                    else{
                         if(card_type[2]=='tong'||card_type[2]=='tiao'||card_type[2]=='wan'){
-                            console.log('胡牌，鸡胡，1倍',card_type)
+                            if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"鸡胡",
+                                    card_times:"1倍"
+                                })
+                            }
+                            else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"碰碰胡",
+                                    card_times:"2倍"
+                                })
+                            }
+                            else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"七小对",
+                                    card_times:"3倍"
+                                })
+                            } 
                         }
-                        else if(card_type[2]=='feng'||card_type[2]=='yuan'){
-                            console.log('胡牌，混一色，2倍',card_type)
+                        else{
+                            if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色",
+                                    card_times:"2倍"
+                                })
+                            }
+                            else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色+碰碰胡",
+                                    card_times:"4倍"
+                                })
+                            }
+                            else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色+七小对",
+                                    card_times:"8倍"
+                                })
+                            }
                         }
                     }
                 }
+                else if(card_type[0]=='feng'||card_type[0]=='yuan'){
+                    if(card_type[1]=='feng'||card_type[1]=='yuan'){
+                        if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色",
+                                card_times:"2倍"
+                            })
+                        }
+                        else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+碰碰胡",
+                                card_times:"4倍"
+                            })
+                        }
+                        else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                            this.setData({
+                                card_state:"成胡",
+                                card_class:"混一色+七小对",
+                                card_times:"8倍"
+                            })
+                        }
+                    }
+                    else{
+                        if(card_type[2]=='feng'||card_type[2]=='yuan'){
+                            if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色",
+                                    card_times:"2倍"
+                                })
+                            }
+                            else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色+碰碰胡",
+                                    card_times:"4倍"
+                                })
+                            }
+                            else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"混一色+七小对",
+                                    card_times:"8倍"
+                                })
+                            }
+                        }
+                        else{
+                            if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"鸡胡",
+                                    card_times:"1倍"
+                                })
+                            }
+                            else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"碰碰胡",
+                                    card_times:"2倍"
+                                })
+                            }
+                            else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
+                                this.setData({
+                                    card_state:"成胡",
+                                    card_class:"七小对",
+                                    card_times:"3倍"
+                                })
+                            }
+                        }
+                    }
+
+                }
             }
-            else if(card_type.length == 4){
+            else if(card_type.length==4){
                 if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
-                    console.log('胡牌，鸡胡，1倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"鸡胡",
+                        card_times:"1倍"
+                    })
                 }
                 else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
-                    console.log('胡牌，碰碰胡，2倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"碰碰胡",
+                        card_times:"2倍"
+                    })
                 }
                 else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
-                    console.log('胡牌，七小对，3倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"七小对",
+                        card_times:"3倍"
+                    })
                 }
             }
-            else if(card_type.length == 5){
+            else{
                 if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum != 0){
-                    console.log('胡牌，鸡胡，1倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"鸡胡",
+                        card_times:"1倍"
+                    })
                 }
                 else if(dui_sum == 1 && peng_sum + gang_sum + shun_sum == 4 && shun_sum == 0){
-                    console.log('胡牌，碰碰胡，2倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"碰碰胡",
+                        card_times:"2倍"
+                    })
                 }
                 else if(dui_sum == 7 && peng_sum + gang_sum + shun_sum == 0){
-                    console.log('胡牌，七小对，3倍',card_type)
+                    this.setData({
+                        card_state:"成胡",
+                        card_class:"七小对",
+                        card_times:"3倍"
+                    })
                 }
             }
         }
+        else{
+            this.setData({
+                card_state:"未成胡",
+                card_class:"无",
+                card_times:"无"
+            })
+        }
+        this.setData({
+            settlement_display:false
+        })
+
+    },
+    settlement_confirm:function(){
+        this.setData({
+            dui_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            peng_list:[1,2,3,4,5,6,7,8,9,10,11,12],
+            gang_list:[1,2,3,4,5,6,7,8,9,10,11,12],
+            shun_list:[1,2,3,4,5,6,7,8,9,10,11,12],
+            tong_list:[1,2,3,4,5,6,7,8,9],
+            tiao_list:[1,2,3,4,5,6,7,8,9],
+            wan_list:[1,2,3,4,5,6,7,8,9],
+            feng_list:[1,2,3,4],
+            yuan_list:[1,2,3],
+            keyboard_display:true,
+            settlement_display:true,
+            keyboard_list:[],
+            player_name:"",
+            tab:[],
+            num:[],
+            url:[],
+            dui_selected:[],
+            peng_selected:[],
+            gang_selected:[],
+            shun_selected:[],
+            cardpool:[],
+            dui_count:{},
+            dui_sum:0,
+            peng_count:{},
+            peng_sum:0,
+            gang_count:{},
+            gang_sum:0,
+            shun_count:{},
+            shun_sum:0,
+            card_type:[],
+            card_state:"",
+            card_class:"",
+            card_times:""
+        })
     },
     /**
      * 生命周期函数--监听页面加载

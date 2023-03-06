@@ -69,3 +69,16 @@ button{
 	top: 50%;
 	left: 25%;
 }
+.p1{
+	color: red;
+	top:30%;
+	left: 35%;
+}
+.p2{
+	top: 35%;
+	left: 35%;
+}
+.p3{
+	top: 40%;
+	left: 35%;
+}
