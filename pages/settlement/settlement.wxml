@@ -2,7 +2,7 @@
 
 <!-- 主界面 -->
 <view class="page main">
-
+	
 	<p>点击各家并输入牌型</p>
 	<view class="player" catchtap="keyboard_clicked" data-name="庄家">
 		<p>庄家</p>

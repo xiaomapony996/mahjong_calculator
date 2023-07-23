@@ -88,4 +88,8 @@ p{
 .dice_selected{
   border-color: red;
 }
+/* 外层组件的宽度可设置成100%或具体数值 */
+.adContainer {
+  width: 100%;
+  }
 
